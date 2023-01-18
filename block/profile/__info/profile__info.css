@@ -1,0 +1,12 @@
+.profile__info {
+  height: 73px;
+  margin-top: 22px;
+  display: grid;
+  grid-template-columns: max-content 24px max-content;
+  grid-template-rows: 43px 57.6px;
+  row-gap: 0;
+  grid-template-areas: 
+  "profile__name profile__editButton ."
+  "profile__profession profile__profession profile__profession";
+
+}

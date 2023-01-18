@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <title>сервис Mesto</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="pages/index/index.css">
+</head>
+<body class="page">
+  <header class="header">
+    <img class="header__logo" src="image/logo.svg" alt="логотип сайта">
+  </header>
+  <section class="profile">
+    <img class="profile__avatar" src="image/profile_ava.jpg" alt="аватарка пользавателя">
+    <div class="profile__info">
+      <h2 class="profile__name">Евгений Азаркин</h2>
+      <h3 class="profile__profession">исследую необычное</h3>
+      <button class='profile__editButton'></button>
+    </div>
+    <button class="profile__addButton"></button>
+  </section>
+  <section class="elements">
+    <div class="element">
+      <img src="image/element1.jpg" class="element__image" alr="изображение каталога">
+      <div class="element__nameandlove">
+        <h2 class="element__name">Грибоедова</h2>
+        <button class="element__love"></button>
+      </div>
+    </div>
+    <div class="element">
+      <img src="image/element2.jpg" class="element__image" alr="изображение каталога">
+      <div class="element__nameandlove">
+        <h2 class="element__name">Нижний Новгород</h2>
+        <button class="element__love"></button>
+      </div>
+    </div>
+    <div class="element">
+      <img src="image/element3.jpg" class="element__image" alr="изображение каталога">
+      <div class="element__nameandlove">
+        <h2 class="element__name">Кронштадт</h2>
+        <button class="element__love"></button>
+      </div>
+    </div>
+    <div class="element">
+      <img src="image/element4.jpg" class="element__image" alr="изображение каталога">
+      <div class="element__nameandlove">
+        <h2 class="element__name">Ораниенбаум</h2>
+        <button class="element__love"></button>
+      </div>
+    </div>
+    <div class="element">
+      <img src="image/element5.jpg" class="element__image" alr="изображение каталога">
+      <div class="element__nameandlove">
+        <h2 class="element__name">Сосново</h2>
+        <button class="element__love"></button>
+      </div>
+    </div>
+    <div class="element">
+      <img src="image/element6.jpg" class="element__image" alr="изображение каталога">
+      <div class="element__nameandlove">
+        <h2 class="element__name">СПб</h2>
+        <button class="element__love"></button>
+      </div>
+    </div>
+  </section>
+  <footer class="footer">
+    <h2 class="footer__mark">2023 Mesto Russia</h2>
+  </footer>
+  <div class="popup">
+    <form class="popup__container">
+      <button class="popup__cancel"></button>
+      <h2 class="popup__form">Редактировать профиль</h2>
+      <input class="popup__name" type="text" placeholder="Имя" required>
+      <input class="popup__professia" type="text" placeholder="Профессия" required>
+      <button class="popup__sumbit" type="submit">Сохранить</button>
+    </form>
+  </div>
+  <script src="pages/index/index.js"></script>
+</body>
+</html>

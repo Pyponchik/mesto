@@ -1,0 +1,22 @@
+.popup__cancel {
+  position: absolute;
+  width: 32px;
+  height: 32px;
+  top: -40px;
+  right: -40px;
+  border: 0;
+  background: url(../../../image/Close_Icon.svg) no-repeat center;
+}
+
+.popup__cancel:hover {
+  opacity: .5;
+}
+
+@media screen and (max-width: 600px) {
+  .popup__cancel {
+    width: 20px;
+    height: 20px;
+    right: 0;
+    top: -36px;
+  }
+}

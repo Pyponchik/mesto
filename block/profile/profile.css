@@ -1,0 +1,25 @@
+.profile {
+  width: 880px;
+  margin-top: 40px;
+  min-height: 120px;
+  display: grid;
+  grid-template-columns: 150px 1fr 150px;
+  grid-template-areas:
+  "profile__avatar profile__info profile__addButton";
+}
+
+@media screen and (max-width: 900px) {
+  .profile {
+    width: 581px;
+  }
+}
+
+@media screen and (max-width: 600px){
+  .profile{
+    width: 282px;
+    min-height: 282px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}
