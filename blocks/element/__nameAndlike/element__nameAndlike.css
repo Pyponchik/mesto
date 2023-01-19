@@ -1,0 +1,6 @@
+.element__nameAndlike {
+  width: 246px;
+  margin-bottom: 31px;
+  display: flex;
+  justify-content: space-between;
+}

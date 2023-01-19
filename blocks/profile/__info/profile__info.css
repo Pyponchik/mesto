@@ -1,9 +1,28 @@
-.profile__info {
-
+.profile__info {;
+  display: grid;
+  height: 73px;
+  grid-template-columns: max-content 1fr;
+  grid-template-rows: 45px 34px;
+  grid-template-areas: 
+  "profile__name profile__editButton"
+  "profile__job profile__job";
 }
-
-@media screen and (max-width: 600px){
-  .profile__info {
-    height: 54px;
+@media screen and (max-width: 900px){
+  .profile__info{
+  grid-template-rows: 30px 28px;
   }
 }
+@media screen and (max-width: 600px){
+  .profile__info {
+    position: relative;
+    width: 100%;
+    grid-template-columns: 200px;
+    grid-template-areas: 
+    "profile__name "
+    "profile__job";
+    justify-content: center;
+  }
+}
+
+/*"profile__name profile__editButton"
+"profile__job profile__job";

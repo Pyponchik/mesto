@@ -12,18 +12,72 @@
     <img class="header__logo" src="image/header__logo.svg" alt="логотип сайта Места России">
   </header>
   <main class="main">
-    <section class="profile box">
+    <section class="profile">
       <img class="profile__avatar" src="image/profile__avatar.jpg.png" alt="аватар аккаунта">
-      <div class="profile__info box"></div>
+      <div class="profile__info">
+        <h2 class="profile__name">Евгений Азаркин</h2>
+        <h3 class="profile__job">исследую необъятное</h3>
+        <button class="profile__editButton"></button>
+      </div>
       <button class="profile__addButton"></button>
     </section>
-    <section class="elements box">
-
+    <section class="elements">
+      <div class="element">
+        <img class="element__image" src="image/element__image1.jpg" alt="изображение карточки">
+        <div class="element__nameAndlike">
+          <h2 class="element__name">Нижний Новгород</h2>
+          <button class="element__like"></button>
+        </div>
+      </div>
+      <div class="element">
+        <img class="element__image" src="image/element__image2.jpg" alt="изображение карточки">
+        <div class="element__nameAndlike">
+          <h2 class="element__name">Ломоносов</h2>
+          <button class="element__like"></button>
+        </div>
+      </div>
+      <div class="element">
+        <img class="element__image" src="image/element__image3.jpg" alt="изображение карточки">
+        <div class="element__nameAndlike">
+          <h2 class="element__name">Кронштадт</h2>
+          <button class="element__like"></button>
+        </div>
+      </div>
+      <div class="element">
+        <img class="element__image" src="image/element__image4.jpg" alt="изображение карточки">
+        <div class="element__nameAndlike">
+          <h2 class="element__name">Ораниенбаум</h2>
+          <button class="element__like"></button>
+        </div>
+      </div>
+      <div class="element">
+        <img class="element__image" src="image/element__image5.jpg" alt="изображение карточки">
+        <div class="element__nameAndlike">
+          <h2 class="element__name">Форт Красная Горка</h2>
+          <button class="element__like"></button>
+        </div>
+      </div>
+      <div class="element">
+        <img class="element__image" src="image/element__image6.jpg" alt="изображение карточки">
+        <div class="element__nameAndlike">
+          <h2 class="element__name">СПб</h2>
+          <button class="element__like"></button>
+        </div>
+      </div>
     </section>
   </main>
   <footer class="footer">
-
+    <p class="footer__text">2020 Mesto Russia</p>
   </footer>
+  <section class="popup">
+    <form class="popup__container">
+      <h2 class="popup__name">Редактировать профиль</h2>
+      <input class="popup__inputName"> 
+      <input class="popup__inputJob"> 
+      <button class="popup__sumButton">Сохранить</button>
+      <button class="popup__closeIcon" type="button"></button>
+    </form>
+  </section>
   <script src="pages/index/index.js"></script>
 </body>
 </html>
