@@ -1,4 +1,4 @@
-.profile__info {;
+.profile__info {
   display: grid;
   height: 73px;
   grid-template-columns: max-content 1fr;
@@ -7,6 +7,7 @@
   "profile__name profile__editButton"
   "profile__job profile__job";
 }
+
 @media screen and (max-width: 900px){
   .profile__info{
   grid-template-rows: 30px 28px;
@@ -23,6 +24,3 @@
     justify-content: center;
   }
 }
-
-/*"profile__name profile__editButton"
-"profile__job profile__job";
