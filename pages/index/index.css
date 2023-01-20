@@ -1,7 +1,3 @@
-@import url(../../blocks/box.css);
-
-
-
 @import url(../../vendor/normalize.css); 
 @import url(../../vendor/fonts/fonts.css);
 @import url(../../blocks/page/page.css);
@@ -31,3 +27,4 @@
 @import url(../../blocks/popup/__inputJob/popup__inputJob.css);
 @import url(../../blocks/popup/__sumButton/popup__sumButton.css);
 @import url(../../blocks/popup/__closeIcon/popup__closeIcon.css);
+@import url(../../blocks/popup/__form/popup__form.css);
