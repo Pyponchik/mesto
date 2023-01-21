@@ -4,6 +4,7 @@
   margin-top: 5px;
   background: white url(../../../image/element__like.svg) no-repeat center;
   border: none;
+  cursor: pointer;
 }
 
 
