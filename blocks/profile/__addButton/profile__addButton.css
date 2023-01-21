@@ -4,6 +4,7 @@
   background: black url(../../../image/profile__addButton.svg) no-repeat center;
   border: 2px white solid;
   align-self: center;
+  border-radius: 2px;
 }
 
 .profile__addButton:hover {

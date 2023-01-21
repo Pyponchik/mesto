@@ -1,6 +1,5 @@
 .profile__info {
   display: grid;
-  height: 73px;
   grid-template-columns: max-content 1fr;
   grid-template-rows: 45px 34px;
   grid-template-areas: 
@@ -15,6 +14,7 @@
 }
 @media screen and (max-width: 600px){
   .profile__info {
+    height: 54px;
     position: relative;
     width: 100%;
     grid-template-columns: 200px;

@@ -1,6 +1,5 @@
 .header {
   width: 880px;
-  height: 74px;
   margin-top: 45px;
   border-bottom: 1px rgba(84, 84, 84, .7) solid;
 }
@@ -8,13 +7,12 @@
 @media screen and (max-width: 900px) {
   .header {
     width: 581px;
-    height: 56px;
   }
 }
 
 @media screen and (max-width: 600px) {
   .header {
     margin-top: 28px;
-    width: 282px;
+    width: 320px;
   }
 }

@@ -5,7 +5,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Mesto</title>
-  <link rel="stylesheet" href="pages/index/index.css"> 
+  <link rel="stylesheet" href="pages/index.css"> 
 </head>
 <body class="page">
   <header class="header">
@@ -15,71 +15,71 @@
     <section class="profile">
       <img class="profile__avatar" src="image/profile__avatar.jpg.png" alt="аватар аккаунта">
       <div class="profile__info">
-        <h2 class="profile__name">Евгений Азаркин</h2>
-        <h3 class="profile__job">изучаю необычное=)</h3>
-        <button class="profile__editButton"></button>
+        <h1 class="profile__name">Евгений Азаркин</h1>
+        <p class="profile__job">изучаю необычное=)</p>
+        <button class="profile__editButton" type="button"></button>
       </div>
-      <button class="profile__addButton"></button>
+      <button class="profile__addButton" type="button"></button>
     </section>
     <section class="elements">
       <div class="element">
-        <img class="element__image" src="image/element__image1.jpg" alt="изображение карточки">
+        <img class="element__image" src="image/element__image1.jpg" alt="канатная дорога над Волгой">
         <div class="element__nameAndlike">
           <h2 class="element__name">Нижний Новгород</h2>
-          <button class="element__like"></button>
+          <button class="element__like" type="button"></button>
         </div>
       </div>
       <div class="element">
-        <img class="element__image" src="image/element__image2.jpg" alt="изображение карточки">
+        <img class="element__image" src="image/element__image2.jpg" alt="Залив порта">
         <div class="element__nameAndlike">
-          <h2 class="element__name">Ломоносов</h2>
-          <button class="element__like"></button>
+          <h2 class="element__name ">Ломоносов</h2>
+          <button class="element__like" type="button"></button>
         </div>
       </div>
       <div class="element">
-        <img class="element__image" src="image/element__image3.jpg" alt="изображение карточки">
+        <img class="element__image" src="image/element__image3.jpg" alt="Разрушеный наблюдательный пост">
         <div class="element__nameAndlike">
           <h2 class="element__name">Кронштадт</h2>
-          <button class="element__like"></button>
+          <button class="element__like" type="button"></button>
         </div>
       </div>
       <div class="element">
-        <img class="element__image" src="image/element__image4.jpg" alt="изображение карточки">
+        <img class="element__image" src="image/element__image4.jpg" alt="канал в парке перед дворцом">
         <div class="element__nameAndlike">
           <h2 class="element__name">Ораниенбаум</h2>
-          <button class="element__like"></button>
+          <button class="element__like" type="button"></button>
         </div>
       </div>
       <div class="element">
-        <img class="element__image" src="image/element__image5.jpg" alt="изображение карточки">
+        <img class="element__image" src="image/element__image5.jpg" alt="Артелерия на ж/д самоходке 180 калибр">
         <div class="element__nameAndlike">
           <h2 class="element__name">Форт Красная Горка</h2>
-          <button class="element__like"></button>
+          <button class="element__like" type="button"></button>
         </div>
       </div>
       <div class="element">
-        <img class="element__image" src="image/element__image6.jpg" alt="изображение карточки">
+        <img class="element__image" src="image/element__image6.jpg" alt="Замерзшая Нева район ВМА">
         <div class="element__nameAndlike">
           <h2 class="element__name">СПб</h2>
-          <button class="element__like"></button>
+          <button class="element__like" type="button"></button>
         </div>
       </div>
     </section>
   </main>
   <footer class="footer">
-    <p class="footer__text">2020 Mesto Russia</p>
+    <p class="footer__text">&#169; 2020 Mesto Russia</p>
   </footer>
   <section class="popup">
     <div class="popup__container">
       <h2 class="popup__name">Редактировать профиль</h2>
       <button class="popup__closeIcon" type="button"></button>
-      <form class="popup__form">
-        <input class="popup__inputName" placeholder="Имя" required>
-        <input class="popup__inputJob" placeholder="Профессия" required> 
+      <form class="popup__form" name="form">
+        <input class="popup__input popup__input_type_name" placeholder="Имя" required name="inputName">
+        <input class="popup__input popup__input_type_job" placeholder="Профессия" required name="inputJob"> 
         <button class="popup__sumButton" type="submit">Сохранить</button>
       </form>
     </div>
   </section>
-  <script src="pages/index/index.js"></script>
+  <script src="scripts/index.js"></script>
 </body>
 </html>
