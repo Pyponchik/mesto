@@ -12,8 +12,8 @@
   font-style:  medium;
   font-weight: 500;
   font-display: swap;
-  src: url(bold/Inter-Bold.woff2) format("woff2"),
-       url(bold/Inter-Bold.woff) format("woff");
+  src: url(medium/Inter-Medium.woff2) format("woff2"),
+       url(medium/Inter-Medium.woff) format("woff");
 }
 
 @font-face {
