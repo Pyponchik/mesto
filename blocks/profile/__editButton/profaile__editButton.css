@@ -8,7 +8,6 @@
   background: black url(../../../image/profile__editButton.svg) no-repeat center;
   border: 1px white solid;
   margin-bottom: 6px;
-  cursor: pointer;
 }
 
 @media screen and (max-width: 600px) {

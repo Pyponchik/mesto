@@ -1,5 +1,6 @@
 .animation {
   transition: .3s;
+  cursor: pointer;
 }
 
 .animation:hover {
