@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Mesto</title>
   <link rel="stylesheet" href="pages/index.css"> 
+  <script src="scripts/index.js" async></script>
 </head>
 <body class="page">
   <header class="header">
@@ -21,49 +22,7 @@
       </div>
       <button class="profile__addButton" type="button"></button>
     </section>
-    <section class="elements">
-      <div class="element">
-        <img class="element__image" src="image/element__image1.jpg" alt="канатная дорога над Волгой">
-        <div class="element__nameAndlike">
-          <h2 class="element__name">Нижний Новгород</h2>
-          <button class="element__like" type="button"></button>
-        </div>
-      </div>
-      <div class="element">
-        <img class="element__image" src="image/element__image2.jpg" alt="Залив порта">
-        <div class="element__nameAndlike">
-          <h2 class="element__name ">Ломоносов</h2>
-          <button class="element__like" type="button"></button>
-        </div>
-      </div>
-      <div class="element">
-        <img class="element__image" src="image/element__image3.jpg" alt="Разрушеный наблюдательный пост">
-        <div class="element__nameAndlike">
-          <h2 class="element__name">Кронштадт</h2>
-          <button class="element__like" type="button"></button>
-        </div>
-      </div>
-      <div class="element">
-        <img class="element__image" src="image/element__image4.jpg" alt="канал в парке перед дворцом">
-        <div class="element__nameAndlike">
-          <h2 class="element__name">Ораниенбаум</h2>
-          <button class="element__like" type="button"></button>
-        </div>
-      </div>
-      <div class="element">
-        <img class="element__image" src="image/element__image5.jpg" alt="Артелерия на ж/д самоходке 180 калибр">
-        <div class="element__nameAndlike">
-          <h2 class="element__name">Форт Красная Горка</h2>
-          <button class="element__like" type="button"></button>
-        </div>
-      </div>
-      <div class="element">
-        <img class="element__image" src="image/element__image6.jpg" alt="Замерзшая Нева район ВМА">
-        <div class="element__nameAndlike">
-          <h2 class="element__name">СПб</h2>
-          <button class="element__like" type="button"></button>
-        </div>
-      </div>
+    <section class="elements">  
     </section>
   </main>
   <footer class="footer">
@@ -80,6 +39,29 @@
       </form>
     </div>
   </section>
-  <script src="scripts/index.js"></script>
+  <section class="popupElementAdd">
+    <div class="popup__container">
+      <h2 class="popup__name">Новое место</h2>
+      <button class="popup__closeIcon popup__closeIcon_addElement" type="button"></button>
+      <form class="popup__form popup__form_addElement" name="form">
+        <input class="popup__input popup__input_name_element" placeholder="Название">
+        <input class="popup__input popup__input_link_element" placeholder="Ссылка на картинку"> 
+        <button class="popup__sumButton popup__sumButton_addElement" type="submit">Создать</button>
+      </form>
+    </div>
+  </section>
+  <section class="popupImage">
+    <img class="popupImage__image">
+  </section>
+  <template class="template">
+    <div class="element">
+      <button class="element__trash" type="button"></button>
+      <img class="element__image" src="image/element__image1.jpg">
+      <div class="element__nameAndlike">
+        <h2 class="element__name"></h2>
+        <button class="element__like" type="button"></button>
+      </div>
+    </div>
+  </template>
 </body>
 </html>
