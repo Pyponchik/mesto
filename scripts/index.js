@@ -13,12 +13,15 @@ function handleFormSubmit (evt) {
     job.textContent = jobInput.value;
     popupClose();
 }
-
-formElement.addEventListener('submit', handleFormSubmit);
-popupIconClose.addEventListener('click', popupClose);
 function popupClose(){
   popup.classList.remove('popup_opened');
 }
+
+
+formElement.addEventListener('submit', handleFormSubmit);
+
+popupIconClose.addEventListener('click', popupClose);
+
 popupIconOpen.addEventListener('click', function(){
   popup.classList.add('popup_opened');
   nameInput.value = name.textContent;
