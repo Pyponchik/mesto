@@ -1,0 +1,12 @@
+@keyframes add{
+  from{
+    opacity: 0;
+  }
+  to{
+    opacity: 1;
+  }
+}
+
+.anim__add {
+  animation: add .3s;
+}

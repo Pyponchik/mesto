@@ -1,0 +1,8 @@
+.animation {
+  transition: .3s;
+}
+
+.animation:hover {
+  opacity: .6;
+  transform: scale(110%);
+}

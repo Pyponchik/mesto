@@ -9,10 +9,6 @@
   cursor: pointer;
 }
 
-.popup__closeIcon:hover {
-  opacity: .6;
-}
-
 @media screen and (max-width: 600px){
   .popup__closeIcon {
     background-size: 20px 20px;

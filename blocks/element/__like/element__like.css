@@ -6,8 +6,3 @@
   border: none;
   cursor: pointer;
 }
-
-
-.element__like:hover {
-  opacity: .5;
-}

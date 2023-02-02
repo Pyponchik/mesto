@@ -15,10 +15,6 @@ const template = document.querySelector('.template')
 .content.querySelector('.element');
 const elements = document.querySelector('.elements');
 const addCard = document.querySelector('.popup__form_addElement');
-
-
-
-
 const initialCards = [
   {
     name: 'Архыз',
@@ -47,7 +43,6 @@ const initialCards = [
 ]; 
 
 addElement(initialCards);
-
 formElement.addEventListener('submit', function(evt){
   evt.preventDefault(); 
   name.textContent = nameInput.value;
@@ -70,18 +65,20 @@ addCard.addEventListener('submit', function(evt){
     {name: `${elementName.value}`,
     link: `${elementLink.value}`
   }]);
+  elementName.value = '';
+  elementLink.value = '';
   popupClose();
 });
-
 function popupClose(){
   popup.classList.remove('popup_opened');
   popupElementAdd.classList.remove('popup_opened');
+  document.querySelector('.popupImage').classList.remove('popup_opened');
 }
 function addElement(arr){
-  arr.forEach((item) => {
-    template.querySelector('.element__name').textContent = item.name;
-    template.querySelector('.element__image').src = item.link;
-    template.querySelector('.element__image').alt = item.name;
+  arr.forEach((arr) => {
+    template.querySelector('.element__name').textContent = arr.name;
+    template.querySelector('.element__image').src = arr.link;
+    template.querySelector('.element__image').alt = arr.name;
     const card = template.cloneNode(true);
     card.querySelector('.element__trash').addEventListener('click', ()=>{
       card.remove();
@@ -89,12 +86,14 @@ function addElement(arr){
     card.querySelector('.element__like').addEventListener('click', ()=>{
       card.querySelector('.element__like').classList.toggle('element__like_active');
     });
-
-    elements.prepend(card);  
+    card.querySelector('.element__image').addEventListener('click',()=> {
+      document.querySelector('.popupImage__image').src = arr.link;
+      document.querySelector('.popupImage__name').textContent = arr.name;
+      document.querySelector('.popupImage').classList.add('popup_opened');
+    });
+    document.querySelector('.popupImage__closeIcon').addEventListener('click',()=> {
+      popupClose();
+    });
+    elements.prepend(card);
   });
 }
-
-
-
-
-
