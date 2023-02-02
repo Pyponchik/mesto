@@ -97,3 +97,5 @@ function addElement(arr){
     elements.prepend(card);
   });
 }
+
+// =)
