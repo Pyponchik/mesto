@@ -79,9 +79,9 @@ function createCard(array){
     popupImageImage.src = array.link;
     popupImage.querySelector('.popupImage__name').textContent = array.name;
     popupOpenClose(popupImage);
-    popupImage.querySelector('.popup__closeIcon').addEventListener('click', ()=>{
-      popupImage.classList.remove('popup_opened');
-    });
+  });
+  popupImage.querySelector('.popupImage__closeIcon').addEventListener('click', ()=>{
+    popupImage.classList.remove('popup_opened');
   });
   const elementLike = card.querySelector('.element__like');
   elementLike.addEventListener('click', ()=> {
@@ -95,9 +95,6 @@ function createCard(array){
   }
   return card;
 }
-popupImage.querySelector('.popup__closeIcon').addEventListener('click', ()=>{
-  popupImage.classList.remove('popup_opened');
-});
 function addCard(array){
   elements.prepend(createCard(array));
 }///////открытие-закрытие попапа/////////////
