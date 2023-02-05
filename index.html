@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Mesto</title>
   <link rel="stylesheet" href="pages/index.css"> 
-  <script src="scripts/index.js" async></script>
+  <script type="text/javascript" src="scripts/index.js" async></script>
 </head>
 <body class="page">
   <header class="header">
@@ -22,13 +22,13 @@
       </div>
       <button class="profile__addButton animation" type="button"></button>
     </section>
-    <section class="elements">  
-    </section>
+    <ol class="elements">
+    </ol>
   </main>
   <footer class="footer">
     <p class="footer__text">&#169; 2023 Mesto Russia</p>
   </footer>
-  <section class="popup animationAdd">
+  <section class="popup popup_edit-profile animationAdd">
     <div class="popup__container">
       <h2 class="popup__name">Редактировать профиль</h2>
       <button class="popup__closeIcon animation" type="button"></button>
@@ -39,14 +39,14 @@
       </form>
     </div>
   </section>
-  <section class="popup popupElementAdd animationAdd">
+  <section class="popup popup_add-card animationAdd">
     <div class="popup__container">
       <h2 class="popup__name">Новое место</h2>
-      <button class="popup__closeIcon popup__closeIcon_addElement animation" type="button"></button>
-      <form class="popup__form popup__form_addElement" name="form">
-        <input class="popup__input popup__input_name_element" type="text" placeholder="Название" required>
-        <input class="popup__input popup__input_link_element" type="text" placeholder="Ссылка на картинку" required> 
-        <button class="popup__sumButton popup__sumButton_addElement" type="submit">Создать</button>
+      <button class="popup__closeIcon animation" type="button"></button>
+      <form class="popup__form" name="form">
+        <input class="popup__input popup__input_name" type="text" placeholder="Название" required>
+        <input class="popup__input popup__input_link" type="text" placeholder="Ссылка на картинку" required> 
+        <button class="popup__sumButton" type="submit">Создать</button>
       </form>
     </div>
   </section>
@@ -54,13 +54,13 @@
     <div class="popupImage__box">
       <img class="popupImage__image">
       <p class="popupImage__name"></p>
-      <button class="popupImage__closeIcon animation" type="button"></button>
+      <button class="popup__closeIcon animation" type="button"></button>
     </div>
   </section>
   <template class="template">
     <div class="element">
       <button class="element__trash animation" type="button"></button>
-      <img class="element__image" src="image/element__image1.jpg">
+      <img class="element__image" src="">
       <div class="element__nameAndlike">
         <h2 class="element__name"></h2>
         <button class="element__like animation" type="button"></button>

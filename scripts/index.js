@@ -1,20 +1,42 @@
-let popup = document.querySelector('.popup');
-let popupElementAdd = document.querySelector('.popupElementAdd');
-let popupIconOpen = document.querySelector('.profile__editButton');
-let popupElementIconOpen = document.querySelector('.profile__addButton');
-let popupIconClose = document.querySelector('.popup__closeIcon');
-let popupElementIconClose =  document.querySelector('.popup__closeIcon_addElement');
-let name = document.querySelector('.profile__name');
-let job = document.querySelector('.profile__job');
-let formElement = document.querySelector('.popup__form');
-let nameInput =  document.querySelector('.popup__input_type_name');
-let jobInput =  document.querySelector('.popup__input_type_job');
-let elementName =  document.querySelector('.popup__input_name_element');
-let elementLink =  document.querySelector('.popup__input_link_element');
-const template = document.querySelector('.template')
-.content.querySelector('.element');
+//открытие 1 попапa///
+const popupEditProfile = document.querySelector('.popup_edit-profile');
+const profileName = document.querySelector('.profile__name');
+const profileJob = document.querySelector('.profile__job');
+const nameInput =  popupEditProfile.querySelector('.popup__input_type_name');
+const jobInput =  popupEditProfile.querySelector('.popup__input_type_job');
+document.querySelector('.profile__editButton').addEventListener('click', ()=>{
+  popupOpenClose(popupEditProfile);
+  nameInput.value = profileName.textContent;
+  jobInput.value = profileJob.textContent;
+});
+popupEditProfile.querySelector('.popup__form').addEventListener('submit', function(evt){
+  evt.preventDefault(); 
+  profileName.textContent = nameInput.value;
+  profileJob.textContent = jobInput.value;
+  popupOpenClose(popupEditProfile);
+});
+popupEditProfile.querySelector('.popup__closeIcon').addEventListener('click', ()=>{
+  popupOpenClose(popupEditProfile);
+});///////открытие 2 попапа///////////
+
+const popupAddCard = document.querySelector('.popup_add-card');
+const popupAddCardForm = popupAddCard.querySelector('.popup__form');
+document.querySelector('.profile__addButton').addEventListener('click',()=>{
+popupOpenClose(popupAddCard);
+});
+popupAddCardForm.addEventListener('submit', function(evt){
+  evt.preventDefault(); 
+  addCard(newElement = 
+    {name: `${popupAddCardForm.querySelector('.popup__input_name').value}`,
+    link: `${popupAddCardForm.querySelector('.popup__input_link').value}`
+  });
+  popupAddCardForm.reset();
+  popupOpenClose(popupAddCard);
+});
+popupAddCard.querySelector('.popup__closeIcon').addEventListener('click', ()=>{
+  popupOpenClose(popupAddCard);
+});//////добавление карточек,лайки и удаление//////
 const elements = document.querySelector('.elements');
-const addCard = document.querySelector('.popup__form_addElement');
 const initialCards = [
   {
     name: 'Архыз',
@@ -40,62 +62,45 @@ const initialCards = [
     name: 'Байкал',
     link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
   }
-]; 
-
-addElement(initialCards);
-formElement.addEventListener('submit', function(evt){
-  evt.preventDefault(); 
-  name.textContent = nameInput.value;
-  job.textContent = jobInput.value;
-  popupClose();
+];//добавление костяка карт
+initialCards.forEach((arr) => {
+  addCard(arr);
 });
-popupElementIconOpen.addEventListener('click', function(){
-  popupElementAdd.classList.add('popup_opened');
-  popupElementIconClose.addEventListener('click', popupClose);
-});
-popupIconOpen.addEventListener('click', function(){
-  popup.classList.add('popup_opened');
-  nameInput.value = name.textContent;
-  jobInput.value = job.textContent;
-  popupIconClose.addEventListener('click', popupClose);
-});
-addCard.addEventListener('submit', function(evt){
-  evt.preventDefault(); 
-  addElement(newElement = [
-    {name: `${elementName.value}`,
-    link: `${elementLink.value}`
-  }]);
-  elementName.value = '';
-  elementLink.value = '';
-  popupClose();
-});
-function popupClose(){
-  popup.classList.remove('popup_opened');
-  popupElementAdd.classList.remove('popup_opened');
-  document.querySelector('.popupImage').classList.remove('popup_opened');
-}
-function addElement(arr){
-  arr.forEach((arr) => {
-    template.querySelector('.element__name').textContent = arr.name;
-    template.querySelector('.element__image').src = arr.link;
-    template.querySelector('.element__image').alt = arr.name;
-    const card = template.cloneNode(true);
-    card.querySelector('.element__trash').addEventListener('click', ()=>{
-      card.remove();
-    });
-    card.querySelector('.element__like').addEventListener('click', ()=>{
-      card.querySelector('.element__like').classList.toggle('element__like_active');
-    });
-    card.querySelector('.element__image').addEventListener('click',()=> {
-      document.querySelector('.popupImage__image').src = arr.link;
-      document.querySelector('.popupImage__name').textContent = arr.name;
-      document.querySelector('.popupImage').classList.add('popup_opened');
-    });
-    document.querySelector('.popupImage__closeIcon').addEventListener('click',()=> {
-      popupClose();
-    });
-    elements.prepend(card);
+function createCard(array){
+  const card = document.querySelector('.template').content.querySelector('.element').cloneNode(true);
+  card.querySelector('.element__trash').addEventListener('click', ()=>{
+    card.remove();
   });
+  const elementImage = card.querySelector('.element__image');
+  const popupImage = document.querySelector('.popupImage')
+  const popupImageImage = popupImage.querySelector('.popupImage__image');
+  card.querySelector('.element__image').addEventListener('click',()=> {
+    popupImageImage.alt = array.name;
+    popupImageImage.src = array.link;
+    popupImage.querySelector('.popupImage__name').textContent = array.name;
+    popupOpenClose(popupImage);
+    popupImage.querySelector('.popup__closeIcon').addEventListener('click', ()=>{
+      popupImage.classList.remove('popup_opened');
+    });
+  });
+  const elementLike = card.querySelector('.element__like');
+  elementLike.addEventListener('click', ()=> {
+    elementLike.classList.toggle('element__like_active');
+  });
+  card.querySelector('.element__name').textContent = array.name;
+  elementImage.src = array.link;
+  elementImage.alt = array.name;
+  elementImage.onerror = function(){
+    elementImage.src = 'https://торги-россии.рф/pictures/thumbs/$2y$10$i5aegDuGn.RhbiwYvDsQVeh1lg5xqlRNn8FYyNrDHdmpUmBbeTG.jpeg';
+  }
+  return card;
 }
-
-// =)
+popupImage.querySelector('.popup__closeIcon').addEventListener('click', ()=>{
+  popupImage.classList.remove('popup_opened');
+});
+function addCard(array){
+  elements.prepend(createCard(array));
+}///////открытие-закрытие попапа/////////////
+function popupOpenClose(tipe){
+  tipe.classList.toggle('popup_opened');
+}

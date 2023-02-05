@@ -1,7 +1,7 @@
 .profile__info {
   display: grid;
   grid-template-columns: max-content 1fr;
-  grid-template-rows: 45px 34px;
+  grid-template-rows: 49px 31px;
   grid-template-areas: 
   "profile__name profile__editButton"
   "profile__job profile__job";
