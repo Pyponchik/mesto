@@ -1,0 +1,6 @@
+.popup__sumButton_nonactive {
+  background-color: white;
+  color: #E5E5E5;
+  cursor: auto;
+  border: 1px #E5E5E5 solid;
+}

@@ -1,53 +1,50 @@
-//открытие 1 попапa///
-const popupEditProfile = document.querySelector('.popup_edit-profile');
+const popup = document.querySelectorAll('.popup');
+const profileEditButton = document.querySelector('.profile__editButton');
+const profileAddButton = document.querySelector('.profile__addButton');
 const profileName = document.querySelector('.profile__name');
 const profileJob = document.querySelector('.profile__job');
-const nameInput =  popupEditProfile.querySelector('.popup__input_type_name');
-const jobInput =  popupEditProfile.querySelector('.popup__input_type_job');
-const profileEditButton = document.querySelector('.profile__editButton');
-const popupEditProfileForm = popupEditProfile.querySelector('.popup__form');
-const popupEditProfileCloseIcon= popupEditProfile.querySelector('.popup__closeIcon');
+const popupCloseIcon = document.querySelectorAll('.popup__closeIcon');
+const popupContainer = document.querySelectorAll('.popup__container');
+// 1 попап
+const popupEditProfile = document.querySelector('.popup_edit-profile');
+const formUserData = document.forms.userData;
+const inputName = formUserData.elements.inputName;
+const inputJob = formUserData.elements.inputJob;
 profileEditButton.addEventListener('click', ()=>{
+  inputName.value = profileName.textContent;
+  inputJob.value = profileJob.textContent;
+  cleanError(inputName);
+  cleanError(inputJob);
   togglePopup(popupEditProfile);
-  nameInput.value = profileName.textContent;
-  jobInput.value = profileJob.textContent;
+  formInputValid(popupEditProfile);
 });
-popupEditProfileForm.addEventListener('submit', function(evt){
-  evt.preventDefault(); 
-  profileName.textContent = nameInput.value;
-  profileJob.textContent = jobInput.value;
+formUserData.addEventListener('submit', (evt)=>{
+  evt.preventDefault();
+  profileName.textContent = inputName.value;
+  profileJob.textContent = inputJob.value;
   togglePopup(popupEditProfile);
-});
-popupEditProfileCloseIcon.addEventListener('click', ()=>{
-  togglePopup(popupEditProfile);
-});///////открытие 2 попапа///////////
+});// 2 попап
 const popupAddCard = document.querySelector('.popup_add-card');
-const popupAddCardForm = popupAddCard.querySelector('.popup__form');
-const profileAddButton = document.querySelector('.profile__addButton');
-const popupAddCardInputName = popupAddCardForm.querySelector('.popup__input_name')
-const popupAddCardInputLink = popupAddCardForm.querySelector('.popup__input_link')
-const popupAddCardCloseIcon = popupAddCard.querySelector('.popup__closeIcon');
+const formAddCard = document.forms.addCard;
+const inputAreal = formAddCard.elements.inputAreal;
+const inputUrl = formAddCard.elements.inputUrl;
 profileAddButton.addEventListener('click',()=>{
+  formAddCard.reset();
+  cleanError(inputAreal);
+  cleanError(inputUrl);
   togglePopup(popupAddCard);
+  formInputValid(popupAddCard);
 });
-popupAddCardForm.addEventListener('submit', function(evt){
+formAddCard.addEventListener('submit', (evt)=>{
   evt.preventDefault(); 
   addCard(newElement = 
-    {name: `${popupAddCardInputName.value}`,
-    link: `${popupAddCardInputLink.value}`
+    {name: `${inputAreal.value}`,
+    link: `${inputUrl.value}`
   });
-  popupAddCardForm.reset();
   togglePopup(popupAddCard);
-});
-popupAddCardCloseIcon.addEventListener('click', ()=>{
-  togglePopup(popupAddCard);
-});//////добавление карточек,лайки и удаление//////
+});//////добавление карточек,лайки и удаление
 const elements = document.querySelector('.elements');
 const popupImage = document.querySelector('.popupImage');
-//добавление костяка карт
-initialCards.forEach((arr) => {
-  addCard(arr);
-});
 function createCard(cardData){
   const card = document.querySelector('.template').content.querySelector('.element').cloneNode(true);
   card.querySelector('.element__trash').addEventListener('click', ()=>{
@@ -56,30 +53,52 @@ function createCard(cardData){
   const elementImage = card.querySelector('.element__image');
   const popupImageImage = popupImage.querySelector('.popupImage__image');
   const popupImageName = popupImage.querySelector('.popupImage__name');
-  elementImage.addEventListener('click',()=> {
+  elementImage.onerror = ()=> {
+    elementImage.src = 'image/error__image.jpeg';
+  }
+  elementImage.addEventListener('click',()=>{
     popupImageImage.alt = cardData.name;
-    popupImageImage.src = cardData.link;
     popupImageName.textContent = cardData.name;
+    popupImageImage.src = cardData.link;
+    elementImage.onerror = () => {
+      popupImageImage.src = 'image/error__image.jpeg';
+    }
     togglePopup(popupImage);
   });
   const elementLike = card.querySelector('.element__like');
-  elementLike.addEventListener('click', ()=> {
+  elementLike.addEventListener('click', ()=>{
     elementLike.classList.toggle('element__like_active');
   });
   card.querySelector('.element__name').textContent = cardData.name;
   elementImage.src = cardData.link;
   elementImage.alt = cardData.name;
-  elementImage.onerror = function(){
-    elementImage.src = 'https://торги-россии.рф/pictures/thumbs/$2y$10$i5aegDuGn.RhbiwYvDsQVeh1lg5xqlRNn8FYyNrDHdmpUmBbeTG.jpeg';
-  }
   return card;
 }
-document.querySelector('.popupImage__closeIcon').addEventListener('click', ()=>{
-  togglePopup(popupImage);
+//кнопка закрытия попапов
+popupCloseIcon.forEach((icon)=>{
+  icon.addEventListener('click',()=>{
+    togglePopup(icon.parentElement.parentElement);
+  });
+});//открытие-закрытие попапа
+function togglePopup(popup){
+popup.classList.toggle('popup_opened');
+}//закрытие по esc
+document.addEventListener('keydown',  (evt) => {
+  if(evt.keyCode === 27){
+      popup.forEach((popup) => {
+        if(popup.classList.contains('popup_opened'))
+          togglePopup(popup);
+      });
+    }
+});//Закрытие попапов по щелчку за его границей
+document.addEventListener('click',(evt)=>{ 
+  if(evt.target.classList.contains('popup'))
+    togglePopup(evt.target);
 });
+// обход массива изначального
+initialCards.forEach((arr) => {
+  addCard(arr);
+});// добавление карточки
 function addCard(cardData){
   elements.prepend(createCard(cardData));
-}///////открытие-закрытие попапа
-function togglePopup(popup){
-  popup.classList.toggle('popup_opened');
 }
