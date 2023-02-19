@@ -16,7 +16,7 @@ profileEditButton.addEventListener('click', ()=>{
   cleanError(inputName);
   cleanError(inputJob);
   togglePopup(popupEditProfile);
-  formInputValid(popupEditProfile);
+  formInputValid(popupEditProfile, enableValidation);
 });
 formUserData.addEventListener('submit', (evt)=>{
   evt.preventDefault();
@@ -33,7 +33,7 @@ profileAddButton.addEventListener('click',()=>{
   cleanError(inputAreal);
   cleanError(inputUrl);
   togglePopup(popupAddCard);
-  formInputValid(popupAddCard);
+  formInputValid(popupAddCard, enableValidation);
 });
 formAddCard.addEventListener('submit', (evt)=>{
   evt.preventDefault(); 
@@ -73,8 +73,7 @@ function createCard(cardData){
   elementImage.src = cardData.link;
   elementImage.alt = cardData.name;
   return card;
-}
-//кнопка закрытия попапов
+}//кнопка закрытия попапов
 popupCloseIcon.forEach((icon)=>{
   icon.addEventListener('click',()=>{
     togglePopup(icon.parentElement.parentElement);
