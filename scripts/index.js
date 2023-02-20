@@ -87,8 +87,7 @@ function togglePopup(popup){
     document.removeEventListener('keydown', closeByEscape);
     document.removeEventListener('click', closeByPop);
   }
-}
-//закрытие по esc
+}//закрытие по esc
 function closeByEscape(evt){
     if(evt.key === 'Escape'){
       const openedPopup = document.querySelector('.popup_opened');
@@ -99,13 +98,10 @@ function closeByPop(evt){
   if(evt.target.classList.contains('popup')) 
     togglePopup(evt.target); 
 }
-
-
 document.addEventListener('click',(evt)=>{ 
   if(evt.target.classList.contains('popup'))
     togglePopup(evt.target);
-});
-// обход массива изначального
+});// обход массива изначального
 initialCards.forEach((arr) => {
   addCard(arr);
 });// добавление карточки
