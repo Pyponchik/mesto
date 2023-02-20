@@ -5,7 +5,7 @@ const enableValidation = {
   inputErrorClass: 'popup__input_error',
   ButtonNonActive: 'popup__sumButton_nonactive',
 };//изменение активности самбита
-function sumbitControl(form, button,obj){
+function controlsSumbit(form, button,obj){
   if(!form.checkValidity()){
     button.classList.add(obj.ButtonNonActive);
     button.setAttribute('disabled', true);
@@ -20,12 +20,12 @@ function formInputValid(pop, obj){
   const form = pop.querySelector(obj.formSelector);
   inputs.forEach((input)=>{
     input.classList.remove(obj.inputErrorClass);
-    sumbitControl(form, button, obj);
+    controlsSumbit(form, button, obj);
     input.addEventListener('input', (evt)=>{
-      const aa = evt.target;
-      !aa.validity.valid ? aa.classList.add(obj.inputErrorClass) : aa.classList.remove(obj.inputErrorClass);
-      aa.nextElementSibling.textContent = aa.validationMessage;
-      sumbitControl(form, button, obj);
+      const symbol = evt.target;
+      !symbol.validity.valid ? symbol.classList.add(obj.inputErrorClass) : symbol.classList.remove(obj.inputErrorClass);
+      symbol.nextElementSibling.textContent = symbol.validationMessage;
+      controlsSumbit(form, button, obj);
     });  
   })
 }// очистка ошибки 
