@@ -13,7 +13,8 @@ function controlsSumbit(form, button,obj){
     button.classList.remove(obj.ButtonNonActive);
     button.removeAttribute('disabled', true);
   }
-}//обработка инпутов
+}
+//обработка инпутов
 function formInputValid(pop, obj){
   const inputs = pop.querySelectorAll(obj.inputSelector);
   const button = pop.querySelector(obj.submitButtonSelector);
@@ -29,7 +30,7 @@ function formInputValid(pop, obj){
     });  
   })
 }// очистка ошибки 
-function cleanError(line) {
-  return line.nextElementSibling.textContent = '';
+function cleanError(error) {
+  return error.nextElementSibling.textContent = '';
 }
 
