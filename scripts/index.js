@@ -27,11 +27,11 @@ const inputUrl = formAddCard.elements.inputUrl;
 profileAddButton.addEventListener('click',()=>{
   cleanError(inputAreal);
   cleanError(inputUrl);
+  formAddCard.reset();
   togglePopup(popupAddCard);
 });
 formAddCard.addEventListener('submit', (evt)=>{
   evt.preventDefault();
-  formAddCard.reset();
   addCard(newElement = 
     {name: `${inputAreal.value}`,
     link: `${inputUrl.value}`
