@@ -13,7 +13,6 @@ profileEditButton.addEventListener('click', ()=>{
   cleanError(inputName);
   cleanError(inputJob);
   togglePopup(popupEditProfile);
-  formInputValid(popupEditProfile, enableValidation);
 });
 formUserData.addEventListener('submit', (evt)=>{
   evt.preventDefault();
@@ -29,7 +28,6 @@ profileAddButton.addEventListener('click',()=>{
   cleanError(inputAreal);
   cleanError(inputUrl);
   togglePopup(popupAddCard);
-  formInputValid(popupAddCard, enableValidation);
 });
 formAddCard.addEventListener('submit', (evt)=>{
   evt.preventDefault();

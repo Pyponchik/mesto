@@ -6,12 +6,12 @@ const enableValidation = {
   ButtonNonActive: 'popup__sumButton_nonactive',
 };//изменение активности самбита
 function controlsSumbit(form, button,obj){
-  if(!form.checkValidity()){
+  if(form.checkValidity()){
+    button.classList.remove(obj.ButtonNonActive);
+    button.removeAttribute('disabled');
+  }else{
     button.classList.add(obj.ButtonNonActive);
     button.setAttribute('disabled', true);
-  }else{
-    button.classList.remove(obj.ButtonNonActive);
-    button.removeAttribute('disabled', true);
   }
 }//обработка инпутов
 function formInputValid(pop, obj){
@@ -31,5 +31,11 @@ function formInputValid(pop, obj){
 }// очистка ошибки 
 function cleanError(line) {
   return line.nextElementSibling.textContent = '';
+}//запуск валидации
+function startValidation(){
+  const popups = document.querySelectorAll('.popup__container');
+  popups.forEach((pop)=>{
+    formInputValid(pop, enableValidation);
+  });
 }
-
+startValidation();
