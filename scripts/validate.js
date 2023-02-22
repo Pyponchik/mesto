@@ -32,3 +32,4 @@ function formInputValid(pop, obj){
 function cleanError(line) {
   return line.nextElementSibling.textContent = '';
 }
+

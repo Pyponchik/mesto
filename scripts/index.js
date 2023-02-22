@@ -26,14 +26,14 @@ const formAddCard = document.forms.addCard;
 const inputAreal = formAddCard.elements.inputAreal;
 const inputUrl = formAddCard.elements.inputUrl;
 profileAddButton.addEventListener('click',()=>{
-  formAddCard.reset();
   cleanError(inputAreal);
   cleanError(inputUrl);
   togglePopup(popupAddCard);
   formInputValid(popupAddCard, enableValidation);
 });
 formAddCard.addEventListener('submit', (evt)=>{
-  evt.preventDefault(); 
+  evt.preventDefault();
+  formAddCard.reset();
   addCard(newElement = 
     {name: `${inputAreal.value}`,
     link: `${inputUrl.value}`
@@ -81,11 +81,11 @@ function togglePopup(popup){
   popup.classList.toggle('popup_opened');
   if(popup.classList.contains('popup_opened')){
     document.addEventListener('keydown', closeByEscape);
-    document.addEventListener('click', closeByPop);
+    document.addEventListener('mousedown', closeByOverlay);
   }
   else{
     document.removeEventListener('keydown', closeByEscape);
-    document.removeEventListener('click', closeByPop);
+    document.removeEventListener('mousedown', closeByOverlay);
   }
 }//закрытие по esc
 function closeByEscape(evt){
@@ -94,14 +94,10 @@ function closeByEscape(evt){
       togglePopup(openedPopup);
     }
 }//Закрытие попапов по щелчку за его границей
-function closeByPop(evt){
+function closeByOverlay(evt){
   if(evt.target.classList.contains('popup')) 
     togglePopup(evt.target); 
-}
-document.addEventListener('click',(evt)=>{ 
-  if(evt.target.classList.contains('popup'))
-    togglePopup(evt.target);
-});// обход массива изначального
+}// обход массива изначального
 initialCards.forEach((arr) => {
   addCard(arr);
 });// добавление карточки
