@@ -13,7 +13,8 @@ function controlsSumbit(form, button,obj){
     button.classList.add(obj.ButtonNonActive);
     button.setAttribute('disabled', true);
   }
-}//обработка инпутов
+}
+//обработка инпутов
 function formInputValid(pop, obj){
   const inputs = pop.querySelectorAll(obj.inputSelector);
   const button = pop.querySelector(obj.submitButtonSelector);
@@ -31,11 +32,5 @@ function formInputValid(pop, obj){
 }// очистка ошибки 
 function cleanError(line) {
   return line.nextElementSibling.textContent = '';
-}//запуск валидации
-function startValidation(){
-  const popups = document.querySelectorAll('.popup__container');
-  popups.forEach((pop)=>{
-    formInputValid(pop, enableValidation);
-  });
 }
 startValidation();
