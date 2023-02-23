@@ -32,7 +32,7 @@ profileAddButton.addEventListener('click',()=>{
 });
 formAddCard.addEventListener('submit', (evt)=>{
   evt.preventDefault();
-  addCard(newElement = 
+  addCard(newElement =
     {name: `${inputAreal.value}`,
     link: `${inputUrl.value}`
   });

@@ -32,5 +32,11 @@ function formInputValid(pop, obj){
 }// очистка ошибки 
 function cleanError(line) {
   return line.nextElementSibling.textContent = '';
-}
-startValidation();
+}//запуск валидатора на формы
+function startValidation(){ 
+  const popups = document.querySelectorAll('.popup__container'); 
+  popups.forEach((pop)=>{ 
+    formInputValid(pop, enableValidation); 
+  }); 
+} 
+startValidation(); 
