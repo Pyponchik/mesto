@@ -1,4 +1,4 @@
-const enableValidation = {
+const validationParams = {
   formSelector: '.popup__form',
   inputSelector: '.popup__input',
   submitButtonSelector: '.popup__sumButton',
@@ -21,22 +21,22 @@ function formInputValid(pop, obj){
   const form = pop.querySelector(obj.formSelector);
   inputs.forEach((input)=>{
     input.classList.remove(obj.inputErrorClass);
-    controlsSumbit(form, button, obj);
+    controlsSumbit(pop, button, obj);
     input.addEventListener('input', (evt)=>{
       const symbol = evt.target;
       !symbol.validity.valid ? symbol.classList.add(obj.inputErrorClass) : symbol.classList.remove(obj.inputErrorClass);
       symbol.nextElementSibling.textContent = symbol.validationMessage;
-      controlsSumbit(form, button, obj);
+      controlsSumbit(pop, button, obj);
     });  
   })
 }// очистка ошибки 
 function cleanError(line) {
   return line.nextElementSibling.textContent = '';
 }//запуск валидатора на формы
-function startValidation(){ 
-  const popups = document.querySelectorAll('.popup__container'); 
+function enableValidation(){ 
+  const popups = document.querySelectorAll('.popup__form'); 
   popups.forEach((pop)=>{ 
-    formInputValid(pop, enableValidation); 
+    formInputValid(pop, validationParams); 
   }); 
 } 
-startValidation(); 
+enableValidation();

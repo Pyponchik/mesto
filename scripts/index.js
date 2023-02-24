@@ -21,10 +21,13 @@ formUserData.addEventListener('submit', (evt)=>{
   togglePopup(popupEditProfile);
 });// 2 попап
 const popupAddCard = document.querySelector('.popup_add-card');
+const popupAddCardSumButton = popupAddCard.querySelector('.popup__sumButton');
 const formAddCard = document.forms.addCard;
 const inputAreal = formAddCard.elements.inputAreal;
 const inputUrl = formAddCard.elements.inputUrl;
 profileAddButton.addEventListener('click',()=>{
+  popupAddCardSumButton.classList.add('popup__sumButton_nonactive');
+  popupAddCardSumButton.setAttribute('disabled', true);
   cleanError(inputAreal);
   cleanError(inputUrl);
   formAddCard.reset();
