@@ -33,10 +33,10 @@ function formInputValid(pop, obj){
 function cleanError(line) {
   return line.nextElementSibling.textContent = '';
 }//запуск валидатора на формы
-function enableValidation(){ 
-  const popups = document.querySelectorAll('.popup__form'); 
-  popups.forEach((pop)=>{ 
+function enableValidation(validationParams){ 
+  const forms = document.querySelectorAll(validationParams.formSelector); 
+  forms.forEach((pop)=>{ 
     formInputValid(pop, validationParams); 
   }); 
 } 
-enableValidation();
+enableValidation(validationParams);
