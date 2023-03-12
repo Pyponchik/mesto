@@ -1,13 +1,12 @@
 export default class FormValidator {
-  constructor(pop, validationParams){
-    this.pop = pop;
+  constructor(form, validationParams){
+    this.form = form;
     this.validationParams = validationParams;
-    this._button = this.pop.querySelector(this.validationParams.submitButtonSelector);
-    this._form = this.pop.querySelector(this.validationParams.formSelector);
-    this._button = pop.querySelector(this.validationParams.submitButtonSelector);
+    this._button = this.form.querySelector(this.validationParams.submitButtonSelector);
+    this._form = this.form.querySelector(this.validationParams.formSelector);
   }
-  _controlsSumbit(){
-    if(this.pop.checkValidity()){
+  _buttonControl(){
+    if(this.form.checkValidity()){
       this._button.classList.remove(this.validationParams.ButtonNonActive);
       this._button.removeAttribute('disabled');
     }else{
@@ -15,17 +14,20 @@ export default class FormValidator {
       this._button.setAttribute('disabled', true);
     }
   }
-  formInputValid(){
-    this._inputs = this.pop.querySelectorAll(this.validationParams.inputSelector);
+  _errorControl(){
+    !this.symbol.validity.valid ? this.symbol.classList.add(this.validationParams.inputErrorClass) : 
+    this.symbol.classList.remove(this.validationParams.inputErrorClass);
+    this.symbol.nextElementSibling.textContent = this.symbol.validationMessage;
+  }
+  formValidation(){
+    this._inputs = this.form.querySelectorAll(this.validationParams.inputSelector);
     this._inputs.forEach((input)=>{
       input.classList.remove(this.validationParams.inputErrorClass);
-      this._controlsSumbit();
+      this._buttonControl();
       input.addEventListener('input', (evt)=>{
-        const symbol = evt.target;
-        !symbol.validity.valid ? symbol.classList.add(this.validationParams.inputErrorClass) : 
-        symbol.classList.remove(this.validationParams.inputErrorClass);
-        symbol.nextElementSibling.textContent = symbol.validationMessage;
-        this._controlsSumbit();
+        this.symbol = evt.target;
+        this._errorControl();
+        this._buttonControl();
       });  
     })
   }

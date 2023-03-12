@@ -72,13 +72,11 @@ formAddCard.addEventListener('submit', (evt)=>{
   togglePopup(popupAddCard);
 });
 //добавление карточек
-const elements = document.querySelector('.elements');
 function createCard(cardData){
-  const card = document.querySelector('.template').content.querySelector('.element').cloneNode(true);
-  const element = new Card(cardData, card);
-  elements.prepend(element.generateCard());
+  const element = new Card(cardData, '.template');
+  document.querySelector('.elements').prepend(element.generateCard());
   //попап с картой
-  const elementImage = card.querySelector('.element__image');
+  const elementImage = document.querySelector('.element__image');
   elementImage.addEventListener('click',(evt)=>{
     const popupImageImage = document.querySelector('.popupImage__image');
     const popupImageName = document.querySelector('.popupImage__name');
@@ -88,12 +86,6 @@ function createCard(cardData){
     togglePopup(document.querySelector('.popupImage'));
   });
 }
-//кнопка закрытия попапов
-const popupCloseIcons = document.querySelectorAll('.popup__closeIcon');
-popupCloseIcons.forEach((button) => {
-  const popup = button.closest('.popup');
-  button.addEventListener('click', () => togglePopup(popup));
-});
 //открытие-закрытие попапа
 function togglePopup(popup){
   popup.classList.toggle('popup_opened');
@@ -113,10 +105,10 @@ function closeByEscape(evt){
       togglePopup(openedPopup);
     }
 }
-//Закрытие попапов по щелчку за его границей
+//Закрытие попапов по щелчку
 function closeByOverlay(evt){
-  if(evt.target.classList.contains('popup')) 
-    togglePopup(evt.target); 
+  if(evt.target.classList.contains('popup') || evt.target.classList.contains('popup__closeIcon')) 
+    togglePopup(evt.target.closest('.popup')); 
 }
 // обход массива изначального
 initialCards.forEach((arr) => {
@@ -125,7 +117,9 @@ initialCards.forEach((arr) => {
 
 // очистка ошибки 
 function cleanError(line) {
+  line.classList.remove('popup__input_error');
   return line.nextElementSibling.textContent = '';
+
 }
 const validationParams = {
   formSelector: '.popup__form',
@@ -136,5 +130,5 @@ const validationParams = {
 };
 const formValidatorProfile = new FormValidator(document.querySelector('.popup__form_profile') ,validationParams);
 const formValidatorCard = new FormValidator(document.querySelector('.popup__form_addCard') ,validationParams);
-formValidatorProfile.formInputValid();
-formValidatorCard.formInputValid();
+formValidatorProfile.formValidation();
+formValidatorCard.formValidation();

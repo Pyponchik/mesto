@@ -1,15 +1,24 @@
 export default class Card {
-  constructor(cardData, card) {
+  constructor(cardData, template) {
     this._name = cardData.name;
     this._link = cardData.link;
-    this._card = card;
-    this._cardImage =this._card.querySelector('.element__image');
-    this._cardName =this._card.querySelector('.element__name');
-    this._elementLike = this._card.querySelector('.element__like');
+    this.template = template;
+    this._element = this._getTemplate();
+    this._cardImage =this._element.querySelector('.element__image');
+    this._cardName =this._element.querySelector('.element__name');
+    this._elementLike = this._element.querySelector('.element__like');
+  }
+  _getTemplate() {
+    const templateElement = document
+    .querySelector(this.template)
+    .content
+    .querySelector('.element')
+    .cloneNode(true);
+    return templateElement;
   }
   _setEventListeners(){
-    this._card.querySelector('.element__trash').addEventListener('click', ()=>{
-      this._card.remove();
+    this._element.querySelector('.element__trash').addEventListener('click', ()=>{
+      this._element.remove();
     });
     
     this._elementLike.addEventListener('click', ()=>{
@@ -24,6 +33,6 @@ export default class Card {
       this._cardImage.src = 'image/error__image.jpeg';
     }
     this._setEventListeners();
-    return this._card;
+    return this._element;
   }
 }
