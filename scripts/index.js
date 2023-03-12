@@ -73,18 +73,8 @@ formAddCard.addEventListener('submit', (evt)=>{
 });
 //добавление карточек
 function createCard(cardData){
-  const element = new Card(cardData, '.template');
+  const element = new Card(cardData, '.template', togglePopup);
   document.querySelector('.elements').prepend(element.generateCard());
-  //попап с картой
-  const elementImage = document.querySelector('.element__image');
-  elementImage.addEventListener('click',(evt)=>{
-    const popupImageImage = document.querySelector('.popupImage__image');
-    const popupImageName = document.querySelector('.popupImage__name');
-    popupImageImage.alt = cardData.name;
-    popupImageName.textContent = cardData.name;
-    popupImageImage.src = evt.target.src;
-    togglePopup(document.querySelector('.popupImage'));
-  });
 }
 //открытие-закрытие попапа
 function togglePopup(popup){
