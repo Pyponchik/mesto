@@ -31,11 +31,4 @@ export default class FormValidator {
       });  
     })
   }
-
-
-
-
-
-
-
 }
