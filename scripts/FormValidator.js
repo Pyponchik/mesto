@@ -4,6 +4,7 @@ export default class FormValidator {
     this.validationParams = validationParams;
     this._button = this.form.querySelector(this.validationParams.submitButtonSelector);
     this._form = this.form.querySelector(this.validationParams.formSelector);
+    this._inputs = this.form.querySelectorAll(this.validationParams.inputSelector);
   }
   _buttonControl(){
     if(this.form.checkValidity()){
@@ -20,7 +21,6 @@ export default class FormValidator {
     this.symbol.nextElementSibling.textContent = this.symbol.validationMessage;
   }
   formValidation(){
-    this._inputs = this.form.querySelectorAll(this.validationParams.inputSelector);
     this._inputs.forEach((input)=>{
       input.classList.remove(this.validationParams.inputErrorClass);
       this._buttonControl();

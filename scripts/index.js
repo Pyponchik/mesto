@@ -59,7 +59,6 @@ profileAddButton.addEventListener('click',()=>{
   popupAddCardSumButton.setAttribute('disabled', true);
   cleanError(inputAreal);
   cleanError(inputUrl);
-  formAddCard.reset();
   togglePopup(popupAddCard);
 });
 formAddCard.addEventListener('submit', (evt)=>{
@@ -69,6 +68,7 @@ formAddCard.addEventListener('submit', (evt)=>{
     {name: `${inputAreal.value}`,
     link: `${inputUrl.value}`
   });
+  formAddCard.reset();
   togglePopup(popupAddCard);
 });
 //добавление карточек
