@@ -1,3 +1,6 @@
+const imagePopup = document.querySelector('.popupImage');
+const popupImageImage = imagePopup.querySelector('.popupImage__image');
+const popupImageName = imagePopup.querySelector('.popupImage__name');
 export default class Card {
   constructor(cardData, template, togglePopup) {
     this.togglePopup = togglePopup;
@@ -8,9 +11,6 @@ export default class Card {
     this._cardImage =this._element.querySelector('.element__image');
     this._cardName =this._element.querySelector('.element__name');
     this._elementLike = this._element.querySelector('.element__like');
-    this.imagePopup = document.querySelector('.popupImage');
-    this.popupImageImage = this.imagePopup.querySelector('.popupImage__image');
-    this.popupImageName = this.imagePopup.querySelector('.popupImage__name');
   }
   _getTemplate() {
     const templateElement = document
@@ -21,18 +21,24 @@ export default class Card {
     return templateElement;
   }
   _openImagePopup(){
-    this.popupImageImage.alt = this._cardName.textContent;
-    this.popupImageName.textContent = this._cardName.textContent;
-    this.popupImageImage.src = this._cardImage.src;
-    this.togglePopup(this.imagePopup);
+    popupImageImage.alt = this._cardName.textContent;
+    popupImageName.textContent = this._cardName.textContent;
+    popupImageImage.src = this._cardImage.src;
+    this.togglePopup(imagePopup);
+  }
+  _setLikeCard(){
+    this._elementLike.classList.toggle('element__like_active');
+  }
+  _deletionCard(){
+    this._element.remove();
   }
   _setEventListeners(){
     this._element.querySelector('.element__trash').addEventListener('click', ()=>{
-      this._element.remove();
+      this._deletionCard();
     });
     
     this._elementLike.addEventListener('click', ()=>{
-      this._elementLike.classList.toggle('element__like_active');
+      this._setLikeCard();
     });
 
     this._cardImage.addEventListener('click', ()=>{
