@@ -26,6 +26,7 @@ const initialCards = [
     link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
   }
 ];
+const cardBox = document.querySelector('.elements');
 initialCards.forEach(createCard);
 // 1 попап
 const profile = document.querySelector('.profile');
@@ -39,7 +40,7 @@ const inputJob = formUserData.elements.inputJob;
 profileEditButton.addEventListener('click', ()=>{
   inputName.value = profileName.textContent;
   inputJob.value = profileJob.textContent;
-  formValidatorProfile.closePopup();
+  formValidatorProfile.resetValidation();
   togglePopup(popupEditProfile);
 });
 formUserData.addEventListener('submit', (evt)=>{
@@ -55,19 +56,22 @@ const formAddCard = document.forms.addCard;
 const inputAreal = formAddCard.elements.inputAreal;
 const inputUrl = formAddCard.elements.inputUrl;
 profileAddButton.addEventListener('click',()=>{
-  formValidatorCard.closePopup();
+  formAddCard.reset();
+  formValidatorCard.resetValidation();
   togglePopup(popupAddCard);
 });
 formAddCard.addEventListener('submit', (evt)=>{
   evt.preventDefault();
   createCard({name: `${inputAreal.value}`, link: `${inputUrl.value}`});
-  //сброс полей после отправки
-  formAddCard.reset();
   togglePopup(popupAddCard);
 });
+function getCard(item) {
+  const element = new Card(item, '.template', togglePopup);
+  return element.generateCard();
+}
 function createCard(cardData){
-  const element = new Card(cardData, '.template', togglePopup);
-  document.querySelector('.elements').prepend(element.generateCard());
+  const element = getCard(cardData)
+  cardBox.prepend(element);
 }
 function togglePopup(popup){
   popup.classList.toggle('popup_opened');

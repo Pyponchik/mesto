@@ -10,8 +10,7 @@ export default class FormValidator {
       this._button.classList.remove(this.validationParams.ButtonNonActive);
       this._button.removeAttribute('disabled');
     }else{
-      this._button.classList.add(this.validationParams.ButtonNonActive);
-      this._button.setAttribute('disabled', true);
+      this._disableButton();
     }
   }
   _toggleErrorControl(){
@@ -19,11 +18,14 @@ export default class FormValidator {
     this.symbol.classList.remove(this.validationParams.inputErrorClass);
     this.symbol.nextElementSibling.textContent = this.symbol.validationMessage;
   }
-  closePopup(){
-    this._button.classList.add('popup__sumButton_nonactive');
+  _disableButton(){
+    this._button.classList.add(this.validationParams.ButtonNonActive);
     this._button.setAttribute('disabled', true);
+  }
+  resetValidation(){
+    this._disableButton();
     this._inputs.forEach((input)=>{
-      input.classList.remove('popup__input_error');
+      input.classList.remove(this.validationParams.inputErrorClass);
       input.nextElementSibling.textContent = '';
     });
   }
