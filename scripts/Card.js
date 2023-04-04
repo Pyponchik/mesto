@@ -1,9 +1,7 @@
-const imagePopup = document.querySelector('.popupImage');
-const popupImageImage = imagePopup.querySelector('.popupImage__image');
-const popupImageName = imagePopup.querySelector('.popupImage__name');
 export default class Card {
-  constructor(cardData, template, togglePopup) {
-    this.togglePopup = togglePopup;
+  constructor(cardData, template, handleCardClick) {
+    this.handleCardClick = handleCardClick;
+    this.cardData = cardData;
     this._name = cardData.name;
     this._link = cardData.link;
     this.template = template;
@@ -21,10 +19,7 @@ export default class Card {
     return templateElement;
   }
   _openImagePopup(){
-    popupImageImage.alt = this._cardName.textContent;
-    popupImageName.textContent = this._cardName.textContent;
-    popupImageImage.src = this._cardImage.src;
-    this.togglePopup(imagePopup);
+    this.handleCardClick(this.cardData);
   }
   _setLikeCard(){
     this._elementLike.classList.toggle('element__like_active');
